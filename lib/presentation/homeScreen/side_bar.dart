@@ -61,7 +61,7 @@ class SideBar extends StatelessWidget {
                     child: Image.asset('assets/images/UserImage.png'),
                   ),
                   Text(
-                    uId!.displayName!,
+                    uId!.displayName != null ? uId.displayName! : uId.phoneNumber!,
                     style: const TextStyle(
                         color: Colors.black,
                         fontSize: 18,

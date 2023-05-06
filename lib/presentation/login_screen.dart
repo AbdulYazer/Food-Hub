@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_hub/application/signUp/signup_bloc.dart';
 import 'package:food_hub/core/constants.dart';
 import 'package:food_hub/presentation/homeScreen/home_screen.dart';
 import 'package:food_hub/presentation/phoneNumberSignIn/phone_number_screen.dart';
@@ -50,6 +52,7 @@ class LoginScreen extends StatelessWidget {
               ontap: () async {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (context) => const PhoneNumberVerifyScreen()));
+                BlocProvider.of<SignupBloc>(context).add(IsLoading(loading: false));
               },
               leading: const Icon(
                 Icons.phone,
