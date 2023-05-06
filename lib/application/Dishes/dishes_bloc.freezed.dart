@@ -28,11 +28,14 @@ mixin _$AllDishesEvent {
             String? dishDescription,
             String? dishImgUrl,
             String? dishId,
-            bool dishAvailability)
+            bool dishAvailability,
+            int dishType)
         addDishesToCart,
     required TResult Function(String dishId, String uId, int quantity)
         updateQuantity,
     required TResult Function(String uId) fetchAllItemsInCart,
+    required TResult Function(String uId) totalPrice,
+    required TResult Function(String uId) deleteAllFromCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,10 +50,13 @@ mixin _$AllDishesEvent {
             String? dishDescription,
             String? dishImgUrl,
             String? dishId,
-            bool dishAvailability)?
+            bool dishAvailability,
+            int dishType)?
         addDishesToCart,
     TResult? Function(String dishId, String uId, int quantity)? updateQuantity,
     TResult? Function(String uId)? fetchAllItemsInCart,
+    TResult? Function(String uId)? totalPrice,
+    TResult? Function(String uId)? deleteAllFromCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,10 +71,13 @@ mixin _$AllDishesEvent {
             String? dishDescription,
             String? dishImgUrl,
             String? dishId,
-            bool dishAvailability)?
+            bool dishAvailability,
+            int dishType)?
         addDishesToCart,
     TResult Function(String dishId, String uId, int quantity)? updateQuantity,
     TResult Function(String uId)? fetchAllItemsInCart,
+    TResult Function(String uId)? totalPrice,
+    TResult Function(String uId)? deleteAllFromCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -78,6 +87,8 @@ mixin _$AllDishesEvent {
     required TResult Function(AddDishesToCart value) addDishesToCart,
     required TResult Function(UpdateQuantity value) updateQuantity,
     required TResult Function(FetchAllItemsInCart value) fetchAllItemsInCart,
+    required TResult Function(TotalPrice value) totalPrice,
+    required TResult Function(DeleteAllFromCart value) deleteAllFromCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -86,6 +97,8 @@ mixin _$AllDishesEvent {
     TResult? Function(AddDishesToCart value)? addDishesToCart,
     TResult? Function(UpdateQuantity value)? updateQuantity,
     TResult? Function(FetchAllItemsInCart value)? fetchAllItemsInCart,
+    TResult? Function(TotalPrice value)? totalPrice,
+    TResult? Function(DeleteAllFromCart value)? deleteAllFromCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -94,6 +107,8 @@ mixin _$AllDishesEvent {
     TResult Function(AddDishesToCart value)? addDishesToCart,
     TResult Function(UpdateQuantity value)? updateQuantity,
     TResult Function(FetchAllItemsInCart value)? fetchAllItemsInCart,
+    TResult Function(TotalPrice value)? totalPrice,
+    TResult Function(DeleteAllFromCart value)? deleteAllFromCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -165,11 +180,14 @@ class _$FetchAllDishes implements FetchAllDishes {
             String? dishDescription,
             String? dishImgUrl,
             String? dishId,
-            bool dishAvailability)
+            bool dishAvailability,
+            int dishType)
         addDishesToCart,
     required TResult Function(String dishId, String uId, int quantity)
         updateQuantity,
     required TResult Function(String uId) fetchAllItemsInCart,
+    required TResult Function(String uId) totalPrice,
+    required TResult Function(String uId) deleteAllFromCart,
   }) {
     return fetchAllDishes();
   }
@@ -187,10 +205,13 @@ class _$FetchAllDishes implements FetchAllDishes {
             String? dishDescription,
             String? dishImgUrl,
             String? dishId,
-            bool dishAvailability)?
+            bool dishAvailability,
+            int dishType)?
         addDishesToCart,
     TResult? Function(String dishId, String uId, int quantity)? updateQuantity,
     TResult? Function(String uId)? fetchAllItemsInCart,
+    TResult? Function(String uId)? totalPrice,
+    TResult? Function(String uId)? deleteAllFromCart,
   }) {
     return fetchAllDishes?.call();
   }
@@ -208,10 +229,13 @@ class _$FetchAllDishes implements FetchAllDishes {
             String? dishDescription,
             String? dishImgUrl,
             String? dishId,
-            bool dishAvailability)?
+            bool dishAvailability,
+            int dishType)?
         addDishesToCart,
     TResult Function(String dishId, String uId, int quantity)? updateQuantity,
     TResult Function(String uId)? fetchAllItemsInCart,
+    TResult Function(String uId)? totalPrice,
+    TResult Function(String uId)? deleteAllFromCart,
     required TResult orElse(),
   }) {
     if (fetchAllDishes != null) {
@@ -227,6 +251,8 @@ class _$FetchAllDishes implements FetchAllDishes {
     required TResult Function(AddDishesToCart value) addDishesToCart,
     required TResult Function(UpdateQuantity value) updateQuantity,
     required TResult Function(FetchAllItemsInCart value) fetchAllItemsInCart,
+    required TResult Function(TotalPrice value) totalPrice,
+    required TResult Function(DeleteAllFromCart value) deleteAllFromCart,
   }) {
     return fetchAllDishes(this);
   }
@@ -238,6 +264,8 @@ class _$FetchAllDishes implements FetchAllDishes {
     TResult? Function(AddDishesToCart value)? addDishesToCart,
     TResult? Function(UpdateQuantity value)? updateQuantity,
     TResult? Function(FetchAllItemsInCart value)? fetchAllItemsInCart,
+    TResult? Function(TotalPrice value)? totalPrice,
+    TResult? Function(DeleteAllFromCart value)? deleteAllFromCart,
   }) {
     return fetchAllDishes?.call(this);
   }
@@ -249,6 +277,8 @@ class _$FetchAllDishes implements FetchAllDishes {
     TResult Function(AddDishesToCart value)? addDishesToCart,
     TResult Function(UpdateQuantity value)? updateQuantity,
     TResult Function(FetchAllItemsInCart value)? fetchAllItemsInCart,
+    TResult Function(TotalPrice value)? totalPrice,
+    TResult Function(DeleteAllFromCart value)? deleteAllFromCart,
     required TResult orElse(),
   }) {
     if (fetchAllDishes != null) {
@@ -277,7 +307,8 @@ abstract class _$$AddDishesToCartCopyWith<$Res> {
       String? dishDescription,
       String? dishImgUrl,
       String? dishId,
-      bool dishAvailability});
+      bool dishAvailability,
+      int dishType});
 }
 
 /// @nodoc
@@ -300,6 +331,7 @@ class __$$AddDishesToCartCopyWithImpl<$Res>
     Object? dishImgUrl = freezed,
     Object? dishId = freezed,
     Object? dishAvailability = null,
+    Object? dishType = null,
   }) {
     return _then(_$AddDishesToCart(
       uId: null == uId
@@ -338,6 +370,10 @@ class __$$AddDishesToCartCopyWithImpl<$Res>
           ? _value.dishAvailability
           : dishAvailability // ignore: cast_nullable_to_non_nullable
               as bool,
+      dishType: null == dishType
+          ? _value.dishType
+          : dishType // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -354,7 +390,8 @@ class _$AddDishesToCart implements AddDishesToCart {
       required this.dishDescription,
       required this.dishImgUrl,
       required this.dishId,
-      required this.dishAvailability});
+      required this.dishAvailability,
+      required this.dishType});
 
   @override
   final String uId;
@@ -374,10 +411,12 @@ class _$AddDishesToCart implements AddDishesToCart {
   final String? dishId;
   @override
   final bool dishAvailability;
+  @override
+  final int dishType;
 
   @override
   String toString() {
-    return 'AllDishesEvent.addDishesToCart(uId: $uId, dishName: $dishName, dishPrice: $dishPrice, quantity: $quantity, dishCalories: $dishCalories, dishDescription: $dishDescription, dishImgUrl: $dishImgUrl, dishId: $dishId, dishAvailability: $dishAvailability)';
+    return 'AllDishesEvent.addDishesToCart(uId: $uId, dishName: $dishName, dishPrice: $dishPrice, quantity: $quantity, dishCalories: $dishCalories, dishDescription: $dishDescription, dishImgUrl: $dishImgUrl, dishId: $dishId, dishAvailability: $dishAvailability, dishType: $dishType)';
   }
 
   @override
@@ -400,7 +439,9 @@ class _$AddDishesToCart implements AddDishesToCart {
                 other.dishImgUrl == dishImgUrl) &&
             (identical(other.dishId, dishId) || other.dishId == dishId) &&
             (identical(other.dishAvailability, dishAvailability) ||
-                other.dishAvailability == dishAvailability));
+                other.dishAvailability == dishAvailability) &&
+            (identical(other.dishType, dishType) ||
+                other.dishType == dishType));
   }
 
   @override
@@ -414,7 +455,8 @@ class _$AddDishesToCart implements AddDishesToCart {
       dishDescription,
       dishImgUrl,
       dishId,
-      dishAvailability);
+      dishAvailability,
+      dishType);
 
   @JsonKey(ignore: true)
   @override
@@ -435,14 +477,17 @@ class _$AddDishesToCart implements AddDishesToCart {
             String? dishDescription,
             String? dishImgUrl,
             String? dishId,
-            bool dishAvailability)
+            bool dishAvailability,
+            int dishType)
         addDishesToCart,
     required TResult Function(String dishId, String uId, int quantity)
         updateQuantity,
     required TResult Function(String uId) fetchAllItemsInCart,
+    required TResult Function(String uId) totalPrice,
+    required TResult Function(String uId) deleteAllFromCart,
   }) {
     return addDishesToCart(uId, dishName, dishPrice, quantity, dishCalories,
-        dishDescription, dishImgUrl, dishId, dishAvailability);
+        dishDescription, dishImgUrl, dishId, dishAvailability, dishType);
   }
 
   @override
@@ -458,13 +503,25 @@ class _$AddDishesToCart implements AddDishesToCart {
             String? dishDescription,
             String? dishImgUrl,
             String? dishId,
-            bool dishAvailability)?
+            bool dishAvailability,
+            int dishType)?
         addDishesToCart,
     TResult? Function(String dishId, String uId, int quantity)? updateQuantity,
     TResult? Function(String uId)? fetchAllItemsInCart,
+    TResult? Function(String uId)? totalPrice,
+    TResult? Function(String uId)? deleteAllFromCart,
   }) {
-    return addDishesToCart?.call(uId, dishName, dishPrice, quantity,
-        dishCalories, dishDescription, dishImgUrl, dishId, dishAvailability);
+    return addDishesToCart?.call(
+        uId,
+        dishName,
+        dishPrice,
+        quantity,
+        dishCalories,
+        dishDescription,
+        dishImgUrl,
+        dishId,
+        dishAvailability,
+        dishType);
   }
 
   @override
@@ -480,15 +537,18 @@ class _$AddDishesToCart implements AddDishesToCart {
             String? dishDescription,
             String? dishImgUrl,
             String? dishId,
-            bool dishAvailability)?
+            bool dishAvailability,
+            int dishType)?
         addDishesToCart,
     TResult Function(String dishId, String uId, int quantity)? updateQuantity,
     TResult Function(String uId)? fetchAllItemsInCart,
+    TResult Function(String uId)? totalPrice,
+    TResult Function(String uId)? deleteAllFromCart,
     required TResult orElse(),
   }) {
     if (addDishesToCart != null) {
       return addDishesToCart(uId, dishName, dishPrice, quantity, dishCalories,
-          dishDescription, dishImgUrl, dishId, dishAvailability);
+          dishDescription, dishImgUrl, dishId, dishAvailability, dishType);
     }
     return orElse();
   }
@@ -500,6 +560,8 @@ class _$AddDishesToCart implements AddDishesToCart {
     required TResult Function(AddDishesToCart value) addDishesToCart,
     required TResult Function(UpdateQuantity value) updateQuantity,
     required TResult Function(FetchAllItemsInCart value) fetchAllItemsInCart,
+    required TResult Function(TotalPrice value) totalPrice,
+    required TResult Function(DeleteAllFromCart value) deleteAllFromCart,
   }) {
     return addDishesToCart(this);
   }
@@ -511,6 +573,8 @@ class _$AddDishesToCart implements AddDishesToCart {
     TResult? Function(AddDishesToCart value)? addDishesToCart,
     TResult? Function(UpdateQuantity value)? updateQuantity,
     TResult? Function(FetchAllItemsInCart value)? fetchAllItemsInCart,
+    TResult? Function(TotalPrice value)? totalPrice,
+    TResult? Function(DeleteAllFromCart value)? deleteAllFromCart,
   }) {
     return addDishesToCart?.call(this);
   }
@@ -522,6 +586,8 @@ class _$AddDishesToCart implements AddDishesToCart {
     TResult Function(AddDishesToCart value)? addDishesToCart,
     TResult Function(UpdateQuantity value)? updateQuantity,
     TResult Function(FetchAllItemsInCart value)? fetchAllItemsInCart,
+    TResult Function(TotalPrice value)? totalPrice,
+    TResult Function(DeleteAllFromCart value)? deleteAllFromCart,
     required TResult orElse(),
   }) {
     if (addDishesToCart != null) {
@@ -541,7 +607,8 @@ abstract class AddDishesToCart implements AllDishesEvent {
       required final String? dishDescription,
       required final String? dishImgUrl,
       required final String? dishId,
-      required final bool dishAvailability}) = _$AddDishesToCart;
+      required final bool dishAvailability,
+      required final int dishType}) = _$AddDishesToCart;
 
   String get uId;
   String? get dishName;
@@ -552,6 +619,7 @@ abstract class AddDishesToCart implements AllDishesEvent {
   String? get dishImgUrl;
   String? get dishId;
   bool get dishAvailability;
+  int get dishType;
   @JsonKey(ignore: true)
   _$$AddDishesToCartCopyWith<_$AddDishesToCart> get copyWith =>
       throw _privateConstructorUsedError;
@@ -649,11 +717,14 @@ class _$UpdateQuantity implements UpdateQuantity {
             String? dishDescription,
             String? dishImgUrl,
             String? dishId,
-            bool dishAvailability)
+            bool dishAvailability,
+            int dishType)
         addDishesToCart,
     required TResult Function(String dishId, String uId, int quantity)
         updateQuantity,
     required TResult Function(String uId) fetchAllItemsInCart,
+    required TResult Function(String uId) totalPrice,
+    required TResult Function(String uId) deleteAllFromCart,
   }) {
     return updateQuantity(dishId, uId, quantity);
   }
@@ -671,10 +742,13 @@ class _$UpdateQuantity implements UpdateQuantity {
             String? dishDescription,
             String? dishImgUrl,
             String? dishId,
-            bool dishAvailability)?
+            bool dishAvailability,
+            int dishType)?
         addDishesToCart,
     TResult? Function(String dishId, String uId, int quantity)? updateQuantity,
     TResult? Function(String uId)? fetchAllItemsInCart,
+    TResult? Function(String uId)? totalPrice,
+    TResult? Function(String uId)? deleteAllFromCart,
   }) {
     return updateQuantity?.call(dishId, uId, quantity);
   }
@@ -692,10 +766,13 @@ class _$UpdateQuantity implements UpdateQuantity {
             String? dishDescription,
             String? dishImgUrl,
             String? dishId,
-            bool dishAvailability)?
+            bool dishAvailability,
+            int dishType)?
         addDishesToCart,
     TResult Function(String dishId, String uId, int quantity)? updateQuantity,
     TResult Function(String uId)? fetchAllItemsInCart,
+    TResult Function(String uId)? totalPrice,
+    TResult Function(String uId)? deleteAllFromCart,
     required TResult orElse(),
   }) {
     if (updateQuantity != null) {
@@ -711,6 +788,8 @@ class _$UpdateQuantity implements UpdateQuantity {
     required TResult Function(AddDishesToCart value) addDishesToCart,
     required TResult Function(UpdateQuantity value) updateQuantity,
     required TResult Function(FetchAllItemsInCart value) fetchAllItemsInCart,
+    required TResult Function(TotalPrice value) totalPrice,
+    required TResult Function(DeleteAllFromCart value) deleteAllFromCart,
   }) {
     return updateQuantity(this);
   }
@@ -722,6 +801,8 @@ class _$UpdateQuantity implements UpdateQuantity {
     TResult? Function(AddDishesToCart value)? addDishesToCart,
     TResult? Function(UpdateQuantity value)? updateQuantity,
     TResult? Function(FetchAllItemsInCart value)? fetchAllItemsInCart,
+    TResult? Function(TotalPrice value)? totalPrice,
+    TResult? Function(DeleteAllFromCart value)? deleteAllFromCart,
   }) {
     return updateQuantity?.call(this);
   }
@@ -733,6 +814,8 @@ class _$UpdateQuantity implements UpdateQuantity {
     TResult Function(AddDishesToCart value)? addDishesToCart,
     TResult Function(UpdateQuantity value)? updateQuantity,
     TResult Function(FetchAllItemsInCart value)? fetchAllItemsInCart,
+    TResult Function(TotalPrice value)? totalPrice,
+    TResult Function(DeleteAllFromCart value)? deleteAllFromCart,
     required TResult orElse(),
   }) {
     if (updateQuantity != null) {
@@ -831,11 +914,14 @@ class _$FetchAllItemsInCart implements FetchAllItemsInCart {
             String? dishDescription,
             String? dishImgUrl,
             String? dishId,
-            bool dishAvailability)
+            bool dishAvailability,
+            int dishType)
         addDishesToCart,
     required TResult Function(String dishId, String uId, int quantity)
         updateQuantity,
     required TResult Function(String uId) fetchAllItemsInCart,
+    required TResult Function(String uId) totalPrice,
+    required TResult Function(String uId) deleteAllFromCart,
   }) {
     return fetchAllItemsInCart(uId);
   }
@@ -853,10 +939,13 @@ class _$FetchAllItemsInCart implements FetchAllItemsInCart {
             String? dishDescription,
             String? dishImgUrl,
             String? dishId,
-            bool dishAvailability)?
+            bool dishAvailability,
+            int dishType)?
         addDishesToCart,
     TResult? Function(String dishId, String uId, int quantity)? updateQuantity,
     TResult? Function(String uId)? fetchAllItemsInCart,
+    TResult? Function(String uId)? totalPrice,
+    TResult? Function(String uId)? deleteAllFromCart,
   }) {
     return fetchAllItemsInCart?.call(uId);
   }
@@ -874,10 +963,13 @@ class _$FetchAllItemsInCart implements FetchAllItemsInCart {
             String? dishDescription,
             String? dishImgUrl,
             String? dishId,
-            bool dishAvailability)?
+            bool dishAvailability,
+            int dishType)?
         addDishesToCart,
     TResult Function(String dishId, String uId, int quantity)? updateQuantity,
     TResult Function(String uId)? fetchAllItemsInCart,
+    TResult Function(String uId)? totalPrice,
+    TResult Function(String uId)? deleteAllFromCart,
     required TResult orElse(),
   }) {
     if (fetchAllItemsInCart != null) {
@@ -893,6 +985,8 @@ class _$FetchAllItemsInCart implements FetchAllItemsInCart {
     required TResult Function(AddDishesToCart value) addDishesToCart,
     required TResult Function(UpdateQuantity value) updateQuantity,
     required TResult Function(FetchAllItemsInCart value) fetchAllItemsInCart,
+    required TResult Function(TotalPrice value) totalPrice,
+    required TResult Function(DeleteAllFromCart value) deleteAllFromCart,
   }) {
     return fetchAllItemsInCart(this);
   }
@@ -904,6 +998,8 @@ class _$FetchAllItemsInCart implements FetchAllItemsInCart {
     TResult? Function(AddDishesToCart value)? addDishesToCart,
     TResult? Function(UpdateQuantity value)? updateQuantity,
     TResult? Function(FetchAllItemsInCart value)? fetchAllItemsInCart,
+    TResult? Function(TotalPrice value)? totalPrice,
+    TResult? Function(DeleteAllFromCart value)? deleteAllFromCart,
   }) {
     return fetchAllItemsInCart?.call(this);
   }
@@ -915,6 +1011,8 @@ class _$FetchAllItemsInCart implements FetchAllItemsInCart {
     TResult Function(AddDishesToCart value)? addDishesToCart,
     TResult Function(UpdateQuantity value)? updateQuantity,
     TResult Function(FetchAllItemsInCart value)? fetchAllItemsInCart,
+    TResult Function(TotalPrice value)? totalPrice,
+    TResult Function(DeleteAllFromCart value)? deleteAllFromCart,
     required TResult orElse(),
   }) {
     if (fetchAllItemsInCart != null) {
@@ -935,6 +1033,389 @@ abstract class FetchAllItemsInCart implements AllDishesEvent {
 }
 
 /// @nodoc
+abstract class _$$TotalPriceCopyWith<$Res> {
+  factory _$$TotalPriceCopyWith(
+          _$TotalPrice value, $Res Function(_$TotalPrice) then) =
+      __$$TotalPriceCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String uId});
+}
+
+/// @nodoc
+class __$$TotalPriceCopyWithImpl<$Res>
+    extends _$AllDishesEventCopyWithImpl<$Res, _$TotalPrice>
+    implements _$$TotalPriceCopyWith<$Res> {
+  __$$TotalPriceCopyWithImpl(
+      _$TotalPrice _value, $Res Function(_$TotalPrice) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? uId = null,
+  }) {
+    return _then(_$TotalPrice(
+      uId: null == uId
+          ? _value.uId
+          : uId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TotalPrice implements TotalPrice {
+  const _$TotalPrice({required this.uId});
+
+  @override
+  final String uId;
+
+  @override
+  String toString() {
+    return 'AllDishesEvent.totalPrice(uId: $uId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TotalPrice &&
+            (identical(other.uId, uId) || other.uId == uId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, uId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TotalPriceCopyWith<_$TotalPrice> get copyWith =>
+      __$$TotalPriceCopyWithImpl<_$TotalPrice>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchAllDishes,
+    required TResult Function(
+            String uId,
+            String? dishName,
+            double? dishPrice,
+            int? quantity,
+            double? dishCalories,
+            String? dishDescription,
+            String? dishImgUrl,
+            String? dishId,
+            bool dishAvailability,
+            int dishType)
+        addDishesToCart,
+    required TResult Function(String dishId, String uId, int quantity)
+        updateQuantity,
+    required TResult Function(String uId) fetchAllItemsInCart,
+    required TResult Function(String uId) totalPrice,
+    required TResult Function(String uId) deleteAllFromCart,
+  }) {
+    return totalPrice(uId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchAllDishes,
+    TResult? Function(
+            String uId,
+            String? dishName,
+            double? dishPrice,
+            int? quantity,
+            double? dishCalories,
+            String? dishDescription,
+            String? dishImgUrl,
+            String? dishId,
+            bool dishAvailability,
+            int dishType)?
+        addDishesToCart,
+    TResult? Function(String dishId, String uId, int quantity)? updateQuantity,
+    TResult? Function(String uId)? fetchAllItemsInCart,
+    TResult? Function(String uId)? totalPrice,
+    TResult? Function(String uId)? deleteAllFromCart,
+  }) {
+    return totalPrice?.call(uId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchAllDishes,
+    TResult Function(
+            String uId,
+            String? dishName,
+            double? dishPrice,
+            int? quantity,
+            double? dishCalories,
+            String? dishDescription,
+            String? dishImgUrl,
+            String? dishId,
+            bool dishAvailability,
+            int dishType)?
+        addDishesToCart,
+    TResult Function(String dishId, String uId, int quantity)? updateQuantity,
+    TResult Function(String uId)? fetchAllItemsInCart,
+    TResult Function(String uId)? totalPrice,
+    TResult Function(String uId)? deleteAllFromCart,
+    required TResult orElse(),
+  }) {
+    if (totalPrice != null) {
+      return totalPrice(uId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchAllDishes value) fetchAllDishes,
+    required TResult Function(AddDishesToCart value) addDishesToCart,
+    required TResult Function(UpdateQuantity value) updateQuantity,
+    required TResult Function(FetchAllItemsInCart value) fetchAllItemsInCart,
+    required TResult Function(TotalPrice value) totalPrice,
+    required TResult Function(DeleteAllFromCart value) deleteAllFromCart,
+  }) {
+    return totalPrice(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchAllDishes value)? fetchAllDishes,
+    TResult? Function(AddDishesToCart value)? addDishesToCart,
+    TResult? Function(UpdateQuantity value)? updateQuantity,
+    TResult? Function(FetchAllItemsInCart value)? fetchAllItemsInCart,
+    TResult? Function(TotalPrice value)? totalPrice,
+    TResult? Function(DeleteAllFromCart value)? deleteAllFromCart,
+  }) {
+    return totalPrice?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchAllDishes value)? fetchAllDishes,
+    TResult Function(AddDishesToCart value)? addDishesToCart,
+    TResult Function(UpdateQuantity value)? updateQuantity,
+    TResult Function(FetchAllItemsInCart value)? fetchAllItemsInCart,
+    TResult Function(TotalPrice value)? totalPrice,
+    TResult Function(DeleteAllFromCart value)? deleteAllFromCart,
+    required TResult orElse(),
+  }) {
+    if (totalPrice != null) {
+      return totalPrice(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TotalPrice implements AllDishesEvent {
+  const factory TotalPrice({required final String uId}) = _$TotalPrice;
+
+  String get uId;
+  @JsonKey(ignore: true)
+  _$$TotalPriceCopyWith<_$TotalPrice> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteAllFromCartCopyWith<$Res> {
+  factory _$$DeleteAllFromCartCopyWith(
+          _$DeleteAllFromCart value, $Res Function(_$DeleteAllFromCart) then) =
+      __$$DeleteAllFromCartCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String uId});
+}
+
+/// @nodoc
+class __$$DeleteAllFromCartCopyWithImpl<$Res>
+    extends _$AllDishesEventCopyWithImpl<$Res, _$DeleteAllFromCart>
+    implements _$$DeleteAllFromCartCopyWith<$Res> {
+  __$$DeleteAllFromCartCopyWithImpl(
+      _$DeleteAllFromCart _value, $Res Function(_$DeleteAllFromCart) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? uId = null,
+  }) {
+    return _then(_$DeleteAllFromCart(
+      uId: null == uId
+          ? _value.uId
+          : uId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteAllFromCart implements DeleteAllFromCart {
+  const _$DeleteAllFromCart({required this.uId});
+
+  @override
+  final String uId;
+
+  @override
+  String toString() {
+    return 'AllDishesEvent.deleteAllFromCart(uId: $uId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteAllFromCart &&
+            (identical(other.uId, uId) || other.uId == uId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, uId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteAllFromCartCopyWith<_$DeleteAllFromCart> get copyWith =>
+      __$$DeleteAllFromCartCopyWithImpl<_$DeleteAllFromCart>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchAllDishes,
+    required TResult Function(
+            String uId,
+            String? dishName,
+            double? dishPrice,
+            int? quantity,
+            double? dishCalories,
+            String? dishDescription,
+            String? dishImgUrl,
+            String? dishId,
+            bool dishAvailability,
+            int dishType)
+        addDishesToCart,
+    required TResult Function(String dishId, String uId, int quantity)
+        updateQuantity,
+    required TResult Function(String uId) fetchAllItemsInCart,
+    required TResult Function(String uId) totalPrice,
+    required TResult Function(String uId) deleteAllFromCart,
+  }) {
+    return deleteAllFromCart(uId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchAllDishes,
+    TResult? Function(
+            String uId,
+            String? dishName,
+            double? dishPrice,
+            int? quantity,
+            double? dishCalories,
+            String? dishDescription,
+            String? dishImgUrl,
+            String? dishId,
+            bool dishAvailability,
+            int dishType)?
+        addDishesToCart,
+    TResult? Function(String dishId, String uId, int quantity)? updateQuantity,
+    TResult? Function(String uId)? fetchAllItemsInCart,
+    TResult? Function(String uId)? totalPrice,
+    TResult? Function(String uId)? deleteAllFromCart,
+  }) {
+    return deleteAllFromCart?.call(uId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchAllDishes,
+    TResult Function(
+            String uId,
+            String? dishName,
+            double? dishPrice,
+            int? quantity,
+            double? dishCalories,
+            String? dishDescription,
+            String? dishImgUrl,
+            String? dishId,
+            bool dishAvailability,
+            int dishType)?
+        addDishesToCart,
+    TResult Function(String dishId, String uId, int quantity)? updateQuantity,
+    TResult Function(String uId)? fetchAllItemsInCart,
+    TResult Function(String uId)? totalPrice,
+    TResult Function(String uId)? deleteAllFromCart,
+    required TResult orElse(),
+  }) {
+    if (deleteAllFromCart != null) {
+      return deleteAllFromCart(uId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchAllDishes value) fetchAllDishes,
+    required TResult Function(AddDishesToCart value) addDishesToCart,
+    required TResult Function(UpdateQuantity value) updateQuantity,
+    required TResult Function(FetchAllItemsInCart value) fetchAllItemsInCart,
+    required TResult Function(TotalPrice value) totalPrice,
+    required TResult Function(DeleteAllFromCart value) deleteAllFromCart,
+  }) {
+    return deleteAllFromCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchAllDishes value)? fetchAllDishes,
+    TResult? Function(AddDishesToCart value)? addDishesToCart,
+    TResult? Function(UpdateQuantity value)? updateQuantity,
+    TResult? Function(FetchAllItemsInCart value)? fetchAllItemsInCart,
+    TResult? Function(TotalPrice value)? totalPrice,
+    TResult? Function(DeleteAllFromCart value)? deleteAllFromCart,
+  }) {
+    return deleteAllFromCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchAllDishes value)? fetchAllDishes,
+    TResult Function(AddDishesToCart value)? addDishesToCart,
+    TResult Function(UpdateQuantity value)? updateQuantity,
+    TResult Function(FetchAllItemsInCart value)? fetchAllItemsInCart,
+    TResult Function(TotalPrice value)? totalPrice,
+    TResult Function(DeleteAllFromCart value)? deleteAllFromCart,
+    required TResult orElse(),
+  }) {
+    if (deleteAllFromCart != null) {
+      return deleteAllFromCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteAllFromCart implements AllDishesEvent {
+  const factory DeleteAllFromCart({required final String uId}) =
+      _$DeleteAllFromCart;
+
+  String get uId;
+  @JsonKey(ignore: true)
+  _$$DeleteAllFromCartCopyWith<_$DeleteAllFromCart> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$AllDishesState {
   dynamic? get function => throw _privateConstructorUsedError;
   List<TableMenuList>? get allDishes => throw _privateConstructorUsedError;
@@ -942,6 +1423,7 @@ mixin _$AllDishesState {
   bool get isError => throw _privateConstructorUsedError;
   int? get quantity => throw _privateConstructorUsedError;
   List<dynamic>? get allItemsInCartList => throw _privateConstructorUsedError;
+  double? get total => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AllDishesStateCopyWith<AllDishesState> get copyWith =>
@@ -960,7 +1442,8 @@ abstract class $AllDishesStateCopyWith<$Res> {
       bool isLoading,
       bool isError,
       int? quantity,
-      List<dynamic>? allItemsInCartList});
+      List<dynamic>? allItemsInCartList,
+      double? total});
 }
 
 /// @nodoc
@@ -982,6 +1465,7 @@ class _$AllDishesStateCopyWithImpl<$Res, $Val extends AllDishesState>
     Object? isError = null,
     Object? quantity = freezed,
     Object? allItemsInCartList = freezed,
+    Object? total = freezed,
   }) {
     return _then(_value.copyWith(
       function: freezed == function
@@ -1008,6 +1492,10 @@ class _$AllDishesStateCopyWithImpl<$Res, $Val extends AllDishesState>
           ? _value.allItemsInCartList
           : allItemsInCartList // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
+      total: freezed == total
+          ? _value.total
+          : total // ignore: cast_nullable_to_non_nullable
+              as double?,
     ) as $Val);
   }
 }
@@ -1026,7 +1514,8 @@ abstract class _$$_InitialCopyWith<$Res>
       bool isLoading,
       bool isError,
       int? quantity,
-      List<dynamic>? allItemsInCartList});
+      List<dynamic>? allItemsInCartList,
+      double? total});
 }
 
 /// @nodoc
@@ -1045,6 +1534,7 @@ class __$$_InitialCopyWithImpl<$Res>
     Object? isError = null,
     Object? quantity = freezed,
     Object? allItemsInCartList = freezed,
+    Object? total = freezed,
   }) {
     return _then(_$_Initial(
       function: freezed == function
@@ -1071,6 +1561,10 @@ class __$$_InitialCopyWithImpl<$Res>
           ? _value._allItemsInCartList
           : allItemsInCartList // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
+      total: freezed == total
+          ? _value.total
+          : total // ignore: cast_nullable_to_non_nullable
+              as double?,
     ));
   }
 }
@@ -1084,7 +1578,8 @@ class _$_Initial implements _Initial {
       required this.isLoading,
       required this.isError,
       required this.quantity,
-      required final List<dynamic>? allItemsInCartList})
+      required final List<dynamic>? allItemsInCartList,
+      required this.total})
       : _allDishes = allDishes,
         _allItemsInCartList = allItemsInCartList;
 
@@ -1118,8 +1613,11 @@ class _$_Initial implements _Initial {
   }
 
   @override
+  final double? total;
+
+  @override
   String toString() {
-    return 'AllDishesState(function: $function, allDishes: $allDishes, isLoading: $isLoading, isError: $isError, quantity: $quantity, allItemsInCartList: $allItemsInCartList)';
+    return 'AllDishesState(function: $function, allDishes: $allDishes, isLoading: $isLoading, isError: $isError, quantity: $quantity, allItemsInCartList: $allItemsInCartList, total: $total)';
   }
 
   @override
@@ -1136,7 +1634,8 @@ class _$_Initial implements _Initial {
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
             const DeepCollectionEquality()
-                .equals(other._allItemsInCartList, _allItemsInCartList));
+                .equals(other._allItemsInCartList, _allItemsInCartList) &&
+            (identical(other.total, total) || other.total == total));
   }
 
   @override
@@ -1147,7 +1646,8 @@ class _$_Initial implements _Initial {
       isLoading,
       isError,
       quantity,
-      const DeepCollectionEquality().hash(_allItemsInCartList));
+      const DeepCollectionEquality().hash(_allItemsInCartList),
+      total);
 
   @JsonKey(ignore: true)
   @override
@@ -1163,7 +1663,8 @@ abstract class _Initial implements AllDishesState {
       required final bool isLoading,
       required final bool isError,
       required final int? quantity,
-      required final List<dynamic>? allItemsInCartList}) = _$_Initial;
+      required final List<dynamic>? allItemsInCartList,
+      required final double? total}) = _$_Initial;
 
   @override
   dynamic? get function;
@@ -1177,6 +1678,8 @@ abstract class _Initial implements AllDishesState {
   int? get quantity;
   @override
   List<dynamic>? get allItemsInCartList;
+  @override
+  double? get total;
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>

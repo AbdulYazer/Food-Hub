@@ -6,7 +6,7 @@ import 'package:food_hub/domain/home_page/homepage_services.dart';
 import 'package:food_hub/domain/home_page/model/dishes_response/dishes_response.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../domain/home_page/models/home_page_response/home_page_response.dart';
+
 
 @LazySingleton(as: HomePageServices)
 class HomePageImpl implements HomePageServices {

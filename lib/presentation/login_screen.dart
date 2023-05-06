@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_hub/core/constants.dart';
@@ -34,7 +32,7 @@ class LoginScreen extends StatelessWidget {
                 Authentication auth = Authentication();
                 User? user = await auth.signInWithGoogle().then((value) {
                   Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                      MaterialPageRoute(builder: (context) => const HomeScreen()));
                 });
               },
               leading: CircleAvatar(
@@ -51,9 +49,9 @@ class LoginScreen extends StatelessWidget {
               name: 'Phone',
               ontap: () async {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => PhoneNumberVerifyScreen()));
+                    builder: (context) => const PhoneNumberVerifyScreen()));
               },
-              leading: Icon(
+              leading: const Icon(
                 Icons.phone,
                 color: Colors.white,
               ),

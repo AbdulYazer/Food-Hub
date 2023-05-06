@@ -9,10 +9,11 @@ class AllDishesState with _$AllDishesState {
     required bool isError,
     required int? quantity,
     required List<dynamic>? allItemsInCartList,
+    required double? total,
   }) = _Initial;
 
   factory AllDishesState.initial() {
     return AllDishesState(
-        allDishes: null, isError: false, isLoading: false, function: null, quantity: null, allItemsInCartList: []);
+        allDishes: null, isError: false, isLoading: false, function: null, quantity: null, allItemsInCartList: [], total: null);
   }
 }

@@ -6,13 +6,11 @@ import 'package:food_hub/presentation/login_screen.dart';
 import 'package:food_hub/services/authFunctions.dart';
 
 import '../../application/Dishes/dishes_bloc.dart';
-import '../../core/constants/loading.dart';
 
 class SideBar extends StatelessWidget {
   SideBar({
     super.key,
   });
-  // final Users user;
 
   final Authentication _auth = Authentication();
 
@@ -22,12 +20,7 @@ class SideBar extends StatelessWidget {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       var userId = auth.currentUser;
-      if (userId != null) {
-        // BlocProvider.of<AllProductsBloc>(context)
-        //     .add(FetchOrders(uId: userId.uid));
-        // BlocProvider.of<WishlistBloc>(context)
-        //     .add(FetchAllWhislistedProducts(uId: userId.uid));
-      }
+      if (userId != null) {}
     });
     return SafeArea(
       child: Drawer(
@@ -48,7 +41,7 @@ class SideBar extends StatelessWidget {
   Widget builderHeader(BuildContext context) {
     var uId = FirebaseAuth.instance.currentUser;
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: Colors.green,
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(15),
@@ -58,8 +51,8 @@ class SideBar extends StatelessWidget {
         builder: (context, state) {
           return InkWell(
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => HomeScreen()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const HomeScreen()));
               },
               child: Column(
                 children: [
@@ -68,15 +61,15 @@ class SideBar extends StatelessWidget {
                     child: Image.asset('assets/images/UserImage.png'),
                   ),
                   Text(
-                    'Profile',
+                    uId!.displayName!,
                     style: const TextStyle(
                         color: Colors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.w500),
                   ),
                   Text(
-                    'ID : 410',
-                    style: const TextStyle(color: Colors.black),
+                    'ID : ${uId.uid}',
+                    style: const TextStyle(color: Colors.black,overflow: TextOverflow.fade),
                   ),
                 ],
               ));
@@ -115,7 +108,7 @@ class SideBar extends StatelessWidget {
       onPressed: () async {
         await _auth.signOut();
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => LoginScreen()),
+            MaterialPageRoute(builder: (context) => const LoginScreen()),
             (route) => false);
       },
     );

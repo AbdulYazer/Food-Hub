@@ -1,12 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_hub/application/signUp/signup_bloc.dart';
 import 'package:food_hub/core/constants.dart';
 import 'package:food_hub/presentation/homeScreen/cart_screen.dart';
 import 'package:food_hub/presentation/homeScreen/side_bar.dart';
-import 'package:food_hub/presentation/login_screen.dart';
-import 'package:food_hub/services/authFunctions.dart';
 
 import '../../application/Dishes/dishes_bloc.dart';
 
@@ -18,7 +15,7 @@ class HomeScreen extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       var user = FirebaseAuth.instance.currentUser;
       if (user != null) {
-        BlocProvider.of<AllDishesBloc>(context).add(FetchAllDishes());
+        BlocProvider.of<AllDishesBloc>(context).add(const FetchAllDishes());
         BlocProvider.of<AllDishesBloc>(context)
             .add(FetchAllItemsInCart(uId: user.uid));
       }
@@ -26,7 +23,7 @@ class HomeScreen extends StatelessWidget {
     return BlocBuilder<AllDishesBloc, AllDishesState>(
       builder: (context, state) {
         if (state.allDishes == null) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
         return DefaultTabController(
           length: state.allDishes!.length,
@@ -42,10 +39,11 @@ class HomeScreen extends StatelessWidget {
                     }
 
                     Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => CartScreen()));
+                        MaterialPageRoute(builder: (context) => const CartScreen()));
                   },
                   child: shoppingCartWithCount(context, Colors.white),
                 ),
+                kWidth,
               ],
               bottom: TabBar(
                   isScrollable: true,
@@ -136,12 +134,12 @@ class TabBarItems extends StatelessWidget {
                   dishIndex: index,
                   dishId: dish[tabIndex].categoryDishes[index].dishId,
                   dishAvailability:
-                      dish[tabIndex].categoryDishes[index].dishAvailability,
+                      dish[tabIndex].categoryDishes[index].dishAvailability, dishType: dish[tabIndex].categoryDishes[index].dishType,
                 );
               },
               itemCount: dish![tabIndex].categoryDishes.length,
               separatorBuilder: (BuildContext context, int index) {
-                return Divider();
+                return const Divider();
               },
             );
           },
@@ -162,7 +160,7 @@ class Dishes extends StatelessWidget {
     required this.tabIndex,
     required this.dishIndex,
     required this.dishId,
-    required this.dishAvailability, 
+    required this.dishAvailability, required this.dishType,
   });
   final String dishName;
   final double dishPrice;
@@ -173,6 +171,7 @@ class Dishes extends StatelessWidget {
   final int dishIndex;
   final String dishId;
   final bool dishAvailability;
+  final int dishType;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -192,7 +191,7 @@ class Dishes extends StatelessWidget {
                   padding: const EdgeInsets.all(2.0),
                   child: CircleAvatar(
                     radius: 5,
-                    backgroundColor: Colors.red,
+                    backgroundColor: dishType == 1 ? Colors.red : Colors.green,
                   ),
                 ),
               ),
@@ -209,7 +208,7 @@ class Dishes extends StatelessWidget {
                     children: [
                       Text('INR $dishPrice', style: DishPriceText),
                       Text(
-                        dishCalories.toString(),
+                        '${dishCalories.toString()} Calories',
                         style: DishPriceText,
                       ),
                     ],
@@ -217,7 +216,7 @@ class Dishes extends StatelessWidget {
                   kHeight,
                   Text(
                     dishDescription,
-                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                    style: const TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                   kHeight,
                   Container(
@@ -228,17 +227,62 @@ class Dishes extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50)),
                     child: BlocBuilder<AllDishesBloc, AllDishesState>(
                       builder: (context, state) {
+                        int quantity = 0;
+                        for (int i = 0;
+                            i < state.allItemsInCartList!.length;
+                            i++) {
+                          if (state.allItemsInCartList![i]['dishId'] ==
+                              dishId) {
+                            quantity = state.allItemsInCartList![i]['quantity'];
+                            break;
+                          } else {
+                            quantity = 0;
+                          }
+                        }
                         return Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.remove,
-                                  color: Colors.white,
-                                )),
+                                onPressed: () {
+                                  if (quantity != 0) {
+                                    final userId =
+                                        FirebaseAuth.instance.currentUser;
+                                    if (userId != null &&
+                                        quantity >
+                                            1) {
+                                      int newQuantity =
+                                          quantity -
+                                              1;
+                                      BlocProvider.of<AllDishesBloc>(context)
+                                          .add(UpdateQuantity(
+                                              quantity: newQuantity,
+                                              dishId: state.allItemsInCartList![
+                                                  dishIndex]['dishId'],
+                                              uId: userId.uid));
+                                      BlocProvider.of<AllDishesBloc>(context)
+                                          .add(FetchAllItemsInCart(
+                                              uId: userId.uid));
+                                    } else {
+                                      showAlertDialog1(
+                                        context,
+                                        dishId:
+                                            dishId,
+                                        uId: userId!.uid, dishName: dishName,
+                                      );
+                                    }
+                                  }
+                                },
+                                icon: quantity != 0
+                                    ? const Icon(
+                                        Icons.remove,
+                                        color: Colors.white,
+                                      )
+                                    : const Icon(
+                                        Icons.remove,
+                                        color: Colors.grey,
+                                      )),
                             Text(
-                              '0',
+                              '$quantity',
                               style:
                                   DishPriceText.copyWith(color: Colors.white),
                             ),
@@ -270,20 +314,20 @@ class Dishes extends StatelessWidget {
                                                   dishAvailability,
                                               dishDescription: dishDescription,
                                               dishImgUrl: dishImgUrl,
-                                              dishId: dishId));
+                                              dishId: dishId, dishType: dishType));
                                       BlocProvider.of<AllDishesBloc>(context)
                                           .add(FetchAllItemsInCart(
                                               uId: userId.uid));
                                     } else {
-                                      int quantity = int.parse(
-                                              state.allItemsInCartList![
-                                                  dishIndex]['quantity']) +
-                                          1;
+                                      int quantity =
+                                          state.allItemsInCartList![dishIndex]
+                                                  ['quantity'] +
+                                              1;
                                       BlocProvider.of<AllDishesBloc>(context)
                                           .add(UpdateQuantity(
                                               quantity: quantity,
                                               dishId: state.allItemsInCartList![
-                                                  dishIndex]['id'],
+                                                  dishIndex]['dishId'],
                                               uId: userId.uid));
                                       BlocProvider.of<AllDishesBloc>(context)
                                           .add(FetchAllItemsInCart(
@@ -291,7 +335,7 @@ class Dishes extends StatelessWidget {
                                     }
                                   }
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.add,
                                   color: Colors.white,
                                 )),
